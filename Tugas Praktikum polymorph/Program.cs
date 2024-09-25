@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.Marshalling;
+using System.Xml.Serialization;
 
 class Program
 {
@@ -45,6 +46,28 @@ class Program
         Console.WriteLine("\nMethod Khusus:");
         singa.Mengaum();
         ular.Merayap();
+        Console.WriteLine();
+
+        //no 1
+        Console.WriteLine("No 1");
+        Console.WriteLine(gajah.Suara());
+        Console.WriteLine(ular.Suara());
+        //no 2
+        Console.WriteLine("No 2");
+        singa.Mengaum();
+        //no 3
+        Console.WriteLine("No 3");
+        Console.WriteLine(singa.InfoHewan());
+        //no 4
+        Console.WriteLine("No 4");
+        ular.Merayap();
+        //no 5
+        Console.WriteLine("No 5");
+        Reptil reptil = new Buaya();
+        Console.WriteLine(reptil.Suara());
+        
+
+
     }
 }
 
