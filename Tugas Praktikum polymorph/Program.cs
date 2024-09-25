@@ -1,39 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.Marshalling;
 
 class Program
 {
     static void Main(string[] args)
-    {
-        // Buat objek kebun binatang
+    { 
         KebunBinatang kebunBinatang = new KebunBinatang();
 
-        // Buat beberapa objek dari berbagai jenis hewan
-        Singa singa = new Singa { nama = "Simba", umur = 5, jumlahKaki = 4 };
-        Gajah gajah = new Gajah { nama = "Dumbo", umur = 10, jumlahKaki = 4 };
-        Ular ular = new Ular { nama = "Kaa", umur = 3, PanjangTubuh = 2.5 };
-        Buaya buaya = new Buaya { nama = "Gator", umur = 7, PanjangTubuh = 4.0 };
+        Singa singa = new Singa();
+        Gajah gajah = new Gajah();
+        Ular ular = new Ular();
+        Buaya buaya = new Buaya();
 
-        // Tambahkan hewan-hewan tersebut ke kebun binatang
+        singa.nama = "Fathan";
+        singa.umur = 8;
+        singa.jumlahKaki = 4;
+
+        gajah.nama = "Elsa";
+        gajah.umur = 7;
+        gajah.jumlahKaki = 4;
+
+        ular.nama = "Aia";
+        ular.umur = 5;
+        ular.PanjangTubuh = 10;
+
+        buaya.nama = "rayan";
+        buaya.umur = 6;
+        buaya.PanjangTubuh = 3;
+
         kebunBinatang.TambahHewan(singa);
         kebunBinatang.TambahHewan(gajah);
         kebunBinatang.TambahHewan(ular);
         kebunBinatang.TambahHewan(buaya);
 
-        // Panggil method DaftarHewan() untuk menampilkan semua hewan
         kebunBinatang.DaftarHewan();
 
-        // Demonstrasi penggunaan polymorphism
-        Console.WriteLine("\nDemonstrasi Polymorphism:");
+        Console.WriteLine("\nPolymorphism pada method suara:");
         Console.WriteLine(singa.Suara());
         Console.WriteLine(gajah.Suara());
         Console.WriteLine(ular.Suara());
         Console.WriteLine(buaya.Suara());
 
-        // Panggil method khusus
         Console.WriteLine("\nMethod Khusus:");
-        Console.WriteLine(singa.Mengaum());
-        Console.WriteLine(ular.Merayap());
+        singa.Mengaum();
+        ular.Merayap();
     }
 }
 
@@ -77,7 +88,7 @@ class Gajah : Mamalia
 {
     public override string Suara()
     {
-        return "Gajah berbunyi: Prroooo!";
+        return "Gajah bersuara";
     }
 }
 
@@ -85,12 +96,12 @@ class Singa : Mamalia
 {
     public override string Suara()
     {
-        return "Singa berbunyi: Roaaar!";
+        return "Singa bersuara";
     }
 
-    public string Mengaum()
+    public void Mengaum()
     {
-        return "Singa mengaum keras!";
+        Console.WriteLine("Singa mengaum!! rawr");
     }
 }
 
@@ -98,12 +109,12 @@ class Ular : Reptil
 {
     public override string Suara()
     {
-        return "Ular berbunyi: Ssssss!";
+        return "Ular bersuara";
     }
 
-    public string Merayap()
+    public void Merayap()
     {
-        return "Ular merayap di tanah";
+        Console.WriteLine("Ular merayap di tanah");
     }
 }
 
@@ -111,7 +122,7 @@ class Buaya : Reptil
 {
     public override string Suara()
     {
-        return "Buaya berbunyi: Groook!";
+        return "Buaya bersuara";
     }
 }
 
@@ -129,7 +140,7 @@ class KebunBinatang
         Console.WriteLine("Daftar Hewan di Kebun Binatang:");
         foreach (Hewan hewan in koleksiHewan)
         {
-            Console.WriteLine(hewan.InfoHewan());
+            Console.WriteLine($" {hewan} \n  - {hewan.InfoHewan()}");
         }
     }
 }
